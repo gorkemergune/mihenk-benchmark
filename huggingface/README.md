@@ -26,37 +26,37 @@ configs:
 
 # MIHENK — Multilingual Intelligence, High-level Evaluation and Neural Knowledge Benchmark
 
-İki dilli (Türkçe + İngilizce), çok disiplinli, **akıl yürütme odaklı** bir LLM değerlendirme benchmark'ı.
+A bilingual (Turkish + English), multi-disciplinary, **reasoning-focused** LLM evaluation benchmark.
 
-Bu HuggingFace deposu benchmark'ın **public sample (dev) split**'idir. Kirlenmeyi (contamination) önlemek için soruların çoğunluğu **private holdout** olarak tutulur ve burada dağıtılmaz. Kanonik/tam repo: <https://github.com/gorkemergune/mihenk-benchmark>
+This HuggingFace repository holds the **public sample (dev) split** of the benchmark. To guard against contamination, the majority of questions are kept as a **private holdout** and are not distributed here. Canonical/full repository: <https://github.com/gorkemergune/mihenk-benchmark>
 
-## Ne ölçer?
+## What it measures
 
-Ezberlenmiş bilgiyi değil; **çıkarım, dikkatli okuma, dil hakimiyeti ve çok adımlı problem çözme** becerisini. 20 disiplin, 4 zorluk seviyesi (L1–L4), iki format:
+Not memorized recall, but **inference, careful reading, language mastery, and multi-step problem solving**. 20 disciplines, 4 difficulty tiers (L1–L4), two formats:
 
-- `multiple_choice` — 4-5 şık, tek doğru cevap, exact-match puanlama.
-- `short_answer` — ≤7 kelime, normalize edilmiş kanonik/eş anlamlı eşleşme.
+- `multiple_choice` — 4–5 options, one correct answer, exact-match scoring.
+- `short_answer` — ≤7 words, normalized canonical/alias matching.
 
-## Alanlar
+## Fields
 
-| Alan | Açıklama |
+| Field | Description |
 |---|---|
-| `id` | `MIHENK-{DISIPLIN}-{DIL}-{ZORLUK}-{SIRA}` |
+| `id` | `MIHENK-{DISCIPLINE}-{LANG}-{DIFFICULTY}-{SEQ}` |
 | `language` | `tr` / `en` |
-| `discipline` | Kanonik disiplin adı (ör. `Matematik`) |
+| `discipline` | Canonical discipline name (e.g. `Matematik`) |
 | `format` | `multiple_choice` / `short_answer` |
 | `difficulty` | `L1`–`L4` |
-| `question` | Soru metni |
-| `choices` | MC için `{A,B,C,D(,E)}`; short_answer'da `null` |
-| `answer` | MC için doğru şık harfi; short_answer'da `null` |
-| `answer_short` | short_answer için kanonik cevap; MC'de `null` |
-| `answer_aliases` | (ops.) kabul edilebilir eş anlamlı cevaplar |
-| `explanation` | Çözümün kısa gerekçesi |
-| `tags` | Etiketler |
-| `source` | Her zaman `orijinal-AI-üretim` |
-| `split` | Bu depoda yalnızca `public` |
+| `question` | Question text |
+| `choices` | `{A,B,C,D(,E)}` for MC; `null` for short answer |
+| `answer` | Correct option letter for MC; `null` for short answer |
+| `answer_short` | Canonical answer for short answer; `null` for MC |
+| `answer_aliases` | (optional) accepted synonymous answers |
+| `explanation` | Short rationale of the solution |
+| `tags` | Tags |
+| `source` | Always `orijinal-AI-üretim` (original AI generation) |
+| `split` | Only `public` in this repository |
 
-## Kullanım
+## Usage
 
 ```python
 from datasets import load_dataset
@@ -64,32 +64,32 @@ from datasets import load_dataset
 ds = load_dataset("gorkemergune/mihenk-benchmark", split="public")
 print(ds[0])
 
-# Örnek: yalnızca Türkçe çoktan seçmeli
+# Example: Turkish multiple-choice only
 tr_mc = ds.filter(lambda r: r["language"] == "tr" and r["format"] == "multiple_choice")
 ```
 
-## Puanlama
+## Scoring
 
-- **MC:** model çıktısından seçilen harf regex ile ayrıştırılır; doğru harfle birebir eşleşme 1 puan.
-- **Short answer:** küçük harf + noktalama/boşluk normalize + kanonik/eş anlamlı eşleşme; sayısal cevaplarda tolerans. 7 kelimeyi aşan veya format dışı yanıt otomatik 0 puan.
+- **MC:** the selected letter is parsed from the model output with a regex; an exact match with the correct letter scores 1.
+- **Short answer:** lowercasing + punctuation/whitespace normalization + canonical/alias matching; numeric answers use a tolerance. Any answer exceeding 7 words or off-format automatically scores 0.
 
-Referans puanlama kodu GitHub reposundaki `scoring/` dizinindedir.
+Reference scoring code lives in the `scoring/` directory of the GitHub repository.
 
-## Şeffaflık ve orijinallik
+## Transparency and originality
 
-Tüm sorular **sıfırdan özgün** üretilmiştir. Hiçbir telifli sınav bankası (ÖSYM, SAT, GRE, dershane yayınları vb.) kopyalanmamış veya paraphrase edilmemiştir; yalnızca stil/zorluk referansı alınmıştır. Bu nedenle `source` alanı her kayıtta `orijinal-AI-üretim` olarak şeffafça belirtilir.
+All questions are written **from scratch**. No copyrighted exam bank (ÖSYM, SAT, GRE, prep-school publications, etc.) is copied or paraphrased; only their style/difficulty is used as a reference. Accordingly, the `source` field is set transparently to `orijinal-AI-üretim` on every record.
 
-## Lisans
+## License
 
-Veri: **CC BY 4.0**. Kod (GitHub): MIT.
+Data: **CC BY 4.0**. Code (GitHub): MIT.
 
-## Alıntı
+## Citation
 
 ```bibtex
 @misc{mihenk2026,
   title  = {MIHENK: Multilingual Intelligence, High-level Evaluation and Neural Knowledge Benchmark},
   year   = {2026},
-  note   = {v1.0, Faz 1 Pilot Set},
+  note   = {v1.0, Phase 1 Pilot Set},
   url    = {https://github.com/gorkemergune/mihenk-benchmark}
 }
 ```
