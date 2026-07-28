@@ -13,7 +13,8 @@ Evaluated with `scripts/evaluate.py` over the complete data set (all splits, all
 | # | Model | Backend | Overall | TR | EN | MC | Short ans. | L1 / L2 / L3 / L4 | LCI |
 |---|-------|---------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | 🥇 | **gemma4:12b** | Ollama (local) | **97.6%** | 98.0% | 97.2% | 99.2% | 96.0% | 97.1 / 99.2 / 97.5 / 96.2 | 2.2 |
-| 🥈 | **llama3.2:3b** | Ollama (local) | **49.0%** | 39.0% | 59.0% | 55.0% | 43.0% | 62.1 / 47.9 / 40.6 / 39.4 | 20.0 |
+| 🥈 | **qwen2.5:7b** | Ollama (local) | **74.4%** | 64.5% | 84.2% | 78.8% | 70.0% | 80.4 / 75.0 / 71.2 / 67.5 | 20.2 |
+| 🥉 | **llama3.2:3b** | Ollama (local) | **49.0%** | 39.0% | 59.0% | 55.0% | 43.0% | 62.1 / 47.9 / 40.6 / 39.4 | 20.0 |
 
 _LCI = language-consistency index (mean absolute TR/EN accuracy gap across disciplines; lower = more consistent)._
 
