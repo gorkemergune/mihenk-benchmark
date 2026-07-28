@@ -92,6 +92,35 @@ def make_anthropic_backend(model: str):
     return call
 
 
+def make_openai_backend(model: str, base_url: str | None, api_key_env: str):
+    """OpenAI-compatible Chat Completions backend.
+
+    Works with OpenAI directly, and with any provider exposing an OpenAI-compatible
+    endpoint via --base-url: OpenRouter (https://openrouter.ai/api/v1), DeepSeek,
+    Mistral, xAI (Grok), Google Gemini (OpenAI-compat), Together, Groq, etc.
+    """
+    try:
+        from openai import OpenAI
+    except ImportError:
+        sys.exit("openai SDK yok. Kurun: pip install openai")
+    key = os.environ.get(api_key_env)
+    if not key:
+        sys.exit(f"{api_key_env} ortam değişkeni tanımlı değil.")
+    client = OpenAI(base_url=base_url, api_key=key)
+
+    def call(system: str, user: str) -> str:
+        resp = client.chat.completions.create(
+            model=model,
+            max_tokens=64,
+            temperature=0,   # determinism; most non-Anthropic models accept this
+            messages=[{"role": "system", "content": system},
+                      {"role": "user", "content": user}],
+        )
+        return (resp.choices[0].message.content or "").strip()
+
+    return call
+
+
 def make_dryrun_backend():
     # Deterministic stand-in so the metric pipeline can be tested without API access.
     def call(system: str, user: str) -> str:
@@ -105,12 +134,21 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--split", choices=["public", "private", "all"], default="public")
     ap.add_argument("--model", default="claude-opus-4-8")
-    ap.add_argument("--backend", choices=["anthropic", "dryrun"], default="anthropic")
+    ap.add_argument("--backend", choices=["anthropic", "openai", "dryrun"], default="anthropic")
+    ap.add_argument("--base-url", default=None,
+                    help="openai backend için endpoint (OpenRouter: https://openrouter.ai/api/v1)")
+    ap.add_argument("--api-key-env", default="OPENAI_API_KEY",
+                    help="openai backend için API anahtarını içeren ortam değişkeni adı")
     ap.add_argument("--limit", type=int, default=0, help="0 = tümü")
     ap.add_argument("--output", default=None, help="Sonuçları JSON olarak yaz")
     args = ap.parse_args()
 
-    call = make_dryrun_backend() if args.backend == "dryrun" else make_anthropic_backend(args.model)
+    if args.backend == "dryrun":
+        call = make_dryrun_backend()
+    elif args.backend == "openai":
+        call = make_openai_backend(args.model, args.base_url, args.api_key_env)
+    else:
+        call = make_anthropic_backend(args.model)
 
     records = list(iter_records(args.split))
     if args.limit:
@@ -158,7 +196,7 @@ def main():
     lci = round(sum(gaps) / len(gaps), 1) if gaps else None
 
     result = {
-        "model": args.model if args.backend == "anthropic" else "dryrun",
+        "model": "dryrun" if args.backend == "dryrun" else args.model,
         "split": args.split,
         "n": overall[1],
         "overall_accuracy": acc(overall),
