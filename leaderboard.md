@@ -14,7 +14,10 @@ Evaluated with `scripts/evaluate.py` over the complete data set (all splits, all
 |---|-------|---------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | 🥇 | **gemma4:12b** | Ollama (local) | **97.6%** | 98.0% | 97.2% | 99.2% | 96.0% | 97.1 / 99.2 / 97.5 / 96.2 | 2.2 |
 | 🥈 | **qwen2.5:7b** | Ollama (local) | **74.4%** | 64.5% | 84.2% | 78.8% | 70.0% | 80.4 / 75.0 / 71.2 / 67.5 | 20.2 |
-| 🥉 | **llama3.2:3b** | Ollama (local) | **49.0%** | 39.0% | 59.0% | 55.0% | 43.0% | 62.1 / 47.9 / 40.6 / 39.4 | 20.0 |
+| 🥉 | **deepseek-r1:7b** | Ollama (local) | **66.4%** | 66.2% | 66.5% | 88.5% | 44.2% | 65.4 / 69.6 / 61.9 / 67.5 | 18.2 |
+| 4 | **llama3.2:3b** | Ollama (local) | **49.0%** | 39.0% | 59.0% | 55.0% | 43.0% | 62.1 / 47.9 / 40.6 / 39.4 | 20.0 |
+
+**deepseek-r1:7b profile.** A reasoning model: strongest MC of the small models (88.5%) but the weakest short-answer/MC gap (44.2% vs 88.5%) — its free-form answers often break the ≤7-word canonical format, which MIHENK penalizes as an instruction-following signal (10/800 answers also came back empty when reasoning consumed the token budget). Notably its TR/EN gap nearly vanishes (66.2% vs 66.5%), unlike the non-reasoning 3B/7B models.
 
 _LCI = language-consistency index (mean absolute TR/EN accuracy gap across disciplines; lower = more consistent)._
 
