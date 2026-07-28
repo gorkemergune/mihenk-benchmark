@@ -20,3 +20,4 @@ Thumbs.db
 # Değerlendirme çıktıları ve özel quizler
 results*.json
 quizzes/*_private_*.md
+prompt.md

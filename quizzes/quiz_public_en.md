@@ -2,10 +2,10 @@
 
 Answer the questions below. For **multiple-choice** items write ONLY the correct option letter (A–E); for **short-answer** items write ONLY the answer (at most 7 words). Do not explain. Give each reply with its question number (e.g. `1. C`).
 
-
 ---
 
 **1.** [Bilimsel Makale Anlama · L3] A study found that ice cream sales and drowning incidents both rise in summer. What is the most correct conclusion from this data?
+
 - A) Ice cream causes drowning
 - B) The two may share a common cause (e.g. hot weather)
 - C) Drownings increase ice cream sales
@@ -15,6 +15,7 @@ Answer the questions below. For **multiple-choice** items write ONLY the correct
 _(short answer)_
 
 **3.** [Biyoloji · L3] A plant's leaves begin to wilt and the soil is dry. At the cellular level, the most likely cause is:
+
 - A) A drop in turgor pressure in the cells
 - B) An increase in the number of chloroplasts
 - C) Faster mitosis
@@ -24,6 +25,7 @@ _(short answer)_
 _(short answer)_
 
 **5.** [Coğrafya · L3] A person walks 6 km north and then 8 km east. What is the straight-line distance back to the starting point?
+
 - A) 14
 - B) 10
 - C) 2
@@ -36,6 +38,7 @@ _(short answer)_
 funcs = [lambda: i for i in range(3)]
 print(funcs[0]())
 Why?
+
 - A) lambdas are unsupported
 - B) i is captured by closure and read at call time, when the loop has ended with i = 2
 - C) range is wrong
@@ -45,6 +48,7 @@ Why?
 _(short answer)_
 
 **9.** [Ekonomi · L3] A product costs 80 and is sold at a 25% profit. What is the selling price?
+
 - A) 100
 - B) 105
 - C) 60
@@ -54,6 +58,7 @@ _(short answer)_
 _(short answer)_
 
 **11.** [Felsefe · L3] 'All cats are animals. Some animals are dogs. Therefore some cats are dogs.' Which is true of this argument?
+
 - A) Valid and sound
 - B) Valid but unsound
 - C) Invalid
@@ -63,6 +68,7 @@ _(short answer)_
 _(short answer)_
 
 **13.** [Fizik · L3] A car accelerates from rest at 3 m/s² for 4 seconds. How far does it travel?
+
 - A) 12
 - B) 24
 - C) 48
@@ -72,6 +78,7 @@ _(short answer)_
 _(short answer)_
 
 **15.** [Grafik Analizi · L3] In a distance-time line graph, the reading is 0 m at 0 s, 20 m at 2 s, and 40 m at 4 s. What is the slope (speed) in m/s?
+
 - A) 10
 - B) 20
 - C) 5
@@ -81,6 +88,7 @@ _(short answer)_
 _(short answer)_
 
 **17.** [Günlük Muhakeme · L3] A box holds 5 red and 3 blue balls. Drawing blindly, what is the fewest balls you must take to be sure of getting 2 of the same color?
+
 - A) 2
 - B) 3
 - C) 4
@@ -90,6 +98,7 @@ _(short answer)_
 _(short answer)_
 
 **19.** [Hukuk · L3] Rule: 'Employees are off on weekends. However, those on the duty roster work on Saturday.' Mary is on the duty roster. On Saturday, Mary:
+
 - A) is off
 - B) works
 - C) may choose to come
@@ -99,6 +108,7 @@ _(short answer)_
 _(short answer)_
 
 **21.** [Kimya · L3] In 2H2 + O2 → 2H2O, if 4 mol of H2 react completely, how many moles of water are produced?
+
 - A) 2
 - B) 4
 - C) 8
@@ -108,6 +118,7 @@ _(short answer)_
 _(short answer)_
 
 **23.** [Mantık · L3] Four runners A, B, C, D finish a race in distinct positions. A finishes before B, C finishes before A, and D is not last. Who finishes last?
+
 - A) A
 - B) B
 - C) C
@@ -117,6 +128,7 @@ _(short answer)_
 _(short answer)_
 
 **25.** [Matematik · L3] A store buys an item for 50 dollars, marks it up by 40%, then sells it at 15% off the marked price. What is the store's profit as a percentage of the cost?
+
 - A) 25
 - B) 19
 - C) 21
@@ -127,10 +139,11 @@ _(short answer)_
 
 **27.** [Programlama · L3] What does the second print output?
 def add(x, lst=[]):
-    lst.append(x)
-    return lst
+lst.append(x)
+return lst
 print(add(1))
 print(add(2))
+
 - A) [2]
 - B) [1, 2]
 - C) [1]
@@ -140,6 +153,7 @@ print(add(2))
 _(short answer)_
 
 **29.** [Sayısal Akıl Yürütme · L3] A price first rises by 20% and then falls by 20% off the new price. What is the net change from the start?
+
 - A) +4%
 - B) -4%
 - C) No change
@@ -149,6 +163,7 @@ _(short answer)_
 _(short answer)_
 
 **31.** [Tablo ve Veri Yorumu · L3] Products' cost and sale prices (Product: Cost/Sale) — A: 40/60, B: 30/36, C: 50/80. Which product has the highest profit rate (profit ÷ cost)?
+
 - A) A
 - B) B
 - C) C
@@ -158,6 +173,7 @@ _(short answer)_
 _(short answer)_
 
 **33.** [Tarih · L3] The spread of paper and printing accelerated the flow of information. This most directly facilitated which development?
+
 - A) The rapid spread of Reformation ideas
 - B) The strengthening of feudalism
 - C) The invention of the wheel
@@ -167,6 +183,7 @@ _(short answer)_
 _(short answer)_
 
 **35.** [Türkçe Dil Bilgisi · L3] The Turkish suffix '-ince' in 'görünce' (upon seeing) forms which kind of verbal?
+
 - A) A participle (adjectival)
 - B) A verbal noun
 - C) A converb (adverbial verb form)
@@ -176,6 +193,7 @@ _(short answer)_
 _(short answer)_
 
 **37.** [Çok Adımlı Muhakeme · L3] A store had 100 kg of flour. On day one, 20% of the total was used; on day two, 25% of the remainder was used. How many kg remain?
+
 - A) 60
 - B) 55
 - C) 40
@@ -184,7 +202,8 @@ _(short answer)_
 **38.** [Çok Adımlı Muhakeme · L4] A pool holds 600 liters and currently has 300 liters. A tap adds 20 liters per minute while a drain removes 5 liters per minute. In how many minutes will the pool be completely full?
 _(short answer)_
 
-**39.** [İngilizce Dil Bilgisi · L3] Choose the correct form: 'If I ___ rich, I would travel the world.'
+**39.** [İngilizce Dil Bilgisi · L3] Choose the correct form: 'If I \_\_\_ rich, I would travel the world.'
+
 - A) am
 - B) was
 - C) were
@@ -192,8 +211,6 @@ _(short answer)_
 
 **40.** [İngilizce Dil Bilgisi · L4] Name the part of speech of the word 'quickly'. (one word)
 _(short answer)_
-
-
 
 ---
 

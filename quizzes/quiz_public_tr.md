@@ -2,10 +2,10 @@
 
 Aşağıdaki soruları yanıtla. **Çoktan seçmeli** sorularda YALNIZCA doğru şıkkın harfini (A–E) yaz; **kısa cevaplı** sorularda YALNIZCA cevabı (en fazla 7 kelime) yaz. Açıklama ekleme. Her yanıtı soru numarasıyla ver (örn. `1. C`).
 
-
 ---
 
 **1.** [Bilimsel Makale Anlama · L1] Özet: Bir çalışmada 100 domates bitkisi iki gruba ayrıldı; bir gruba yeni bir gübre, diğerine normal gübre verildi. Sekiz hafta sonunda yeni gübre grubunun ortalama verimi %15 daha yüksek bulundu. Bu çalışmanın temel bulgusu nedir?
+
 - A) Yeni gübre verimi artırmıştır
 - B) Domatesler sekiz haftada büyümez
 - C) Normal gübre zararlıdır
@@ -15,6 +15,7 @@ Aşağıdaki soruları yanıtla. **Çoktan seçmeli** sorularda YALNIZCA doğru 
 _(kısa cevap)_
 
 **3.** [Biyoloji · L1] İnsan vücudunda oksijeni dokulara taşıyan kan hücresi hangisidir?
+
 - A) Akyuvar
 - B) Alyuvar
 - C) Trombosit
@@ -24,6 +25,7 @@ _(kısa cevap)_
 _(kısa cevap)_
 
 **5.** [Coğrafya · L1] Aşağıdaki enlemlerden hangisi Ekvator'a en yakındır?
+
 - A) 60° Kuzey
 - B) 23° Kuzey
 - C) 45° Güney
@@ -34,17 +36,19 @@ _(kısa cevap)_
 
 **7.** [Debugging · L1] Aşağıdaki döngünün 1'den 5'e kadar (5 dahil) sayıları yazdırması bekleniyor ama 5 hiç yazılmıyor:
 for i in range(1, 5):
-    print(i)
+print(i)
 Hatayı düzeltmek için ne yapılmalı?
+
 - A) range(1, 6) yazılmalı
 - B) range(0, 5) yazılmalı
 - C) while döngüsü kullanılmalı
 - D) Kodda hata yok
 
-**8.** [Debugging · L2] Bir a listesini referansla paylaşmak yerine kopyalamak için a.____() biçiminde hangi metot çağrılır? (metot adı)
-_(kısa cevap)_
+**8.** [Debugging · L2] Bir a listesini referansla paylaşmak yerine kopyalamak için a.\__\_\_() biçiminde hangi metot çağrılır? (metot adı)
+_(kısa cevap)\_
 
 **9.** [Ekonomi · L1] Bir malın arzı sabitken talebi artarsa, fiyatı genellikle nasıl değişir?
+
 - A) Artar
 - B) Azalır
 - C) Değişmez
@@ -54,6 +58,7 @@ _(kısa cevap)_
 _(kısa cevap)_
 
 **11.** [Felsefe · L1] Bir argümanda öncüllerden çıkarılan nihai ifadeye ne ad verilir?
+
 - A) Öncül
 - B) Sonuç
 - C) Varsayım
@@ -63,6 +68,7 @@ _(kısa cevap)_
 _(kısa cevap)_
 
 **13.** [Fizik · L1] Bir cisim 10 m/s sabit hızla 5 saniye hareket ederse aldığı yol kaç metredir?
+
 - A) 2
 - B) 50
 - C) 15
@@ -72,6 +78,7 @@ _(kısa cevap)_
 _(kısa cevap)_
 
 **15.** [Grafik Analizi · L1] Bir çubuk grafikte aylık yağış (mm) şöyledir: Ocak 40, Şubat 60, Mart 30, Nisan 80. En yüksek yağış hangi aydadır?
+
 - A) Ocak
 - B) Şubat
 - C) Nisan
@@ -81,6 +88,7 @@ _(kısa cevap)_
 _(kısa cevap)_
 
 **17.** [Günlük Muhakeme · L1] Dışarıda sağanak yağmur yağıyor ve yanında şemsiye yok. Islanmamak için en mantıklı davranış hangisidir?
+
 - A) Açık alanda dolaşmaya devam etmek
 - B) Bir saçak veya çatı altında beklemek
 - C) Yağmurun altında koşmak
@@ -90,6 +98,7 @@ _(kısa cevap)_
 _(kısa cevap)_
 
 **19.** [Hukuk · L1] Bir kural şöyledir: 'Kütüphaneye 18 yaşından küçükler ancak bir yetişkinle birlikte girebilir.' 16 yaşındaki Ali kütüphaneye tek başına gelmiştir. Bu kurala göre Ali ne yapabilir?
+
 - A) Serbestçe girebilir
 - B) Tek başına giremez
 - C) Ücret öderse girer
@@ -99,6 +108,7 @@ _(kısa cevap)_
 _(kısa cevap)_
 
 **21.** [Kimya · L1] Suyun kimyasal formülü aşağıdakilerden hangisidir?
+
 - A) CO2
 - B) H2O
 - C) O2
@@ -108,6 +118,7 @@ _(kısa cevap)_
 _(kısa cevap)_
 
 **23.** [Mantık · L1] 'Bütün A'lar B'dir' önermesinin olumsuzu (değili) aşağıdakilerden hangisidir?
+
 - A) Hiçbir A B değildir
 - B) Bazı A'lar B değildir
 - C) Bütün B'ler A'dır
@@ -117,6 +128,7 @@ _(kısa cevap)_
 _(kısa cevap)_
 
 **25.** [Matematik · L1] Bir sınıfta 30 öğrenci vardır ve öğrencilerin %40'ı kızdır. Sınıfta kaç kız öğrenci vardır?
+
 - A) 18
 - B) 12
 - C) 15
@@ -128,8 +140,9 @@ _(kısa cevap)_
 **27.** [Programlama · L1] Aşağıdaki Python kodu ne yazdırır?
 x = 0
 for i in range(4):
-    x += i
+x += i
 print(x)
+
 - A) 6
 - B) 10
 - C) 4
@@ -139,6 +152,7 @@ print(x)
 _(kısa cevap)_
 
 **29.** [Sayısal Akıl Yürütme · L1] Bir sayının yarısı 18 ise, o sayının kendisi kaçtır?
+
 - A) 9
 - B) 36
 - C) 20
@@ -148,6 +162,7 @@ _(kısa cevap)_
 _(kısa cevap)_
 
 **31.** [Tablo ve Veri Yorumu · L1] Bir kırtasiyenin satışları (Ürün: Adet) şöyledir — Kalem: 120, Silgi: 80, Defter: 150, Cetvel: 50. En çok satılan ürün hangisidir?
+
 - A) Kalem
 - B) Defter
 - C) Silgi
@@ -157,6 +172,7 @@ _(kısa cevap)_
 _(kısa cevap)_
 
 **33.** [Tarih · L1] Aşağıdaki gelişmelerden hangisi kronolojik olarak en erken gerçekleşmiştir?
+
 - A) Buhar makinesinin yaygınlaşması
 - B) Matbaanın Avrupa'da yaygınlaşması
 - C) Telgrafın icadı
@@ -166,6 +182,7 @@ _(kısa cevap)_
 _(kısa cevap)_
 
 **35.** [Türkçe Dil Bilgisi · L1] Aşağıdaki sözcüklerin hangisinde, ünlüyle başlayan ek geldiğinde sondaki sert ünsüz yumuşamıştır?
+
 - A) ağaç → ağacı
 - B) süt → sütü
 - C) kol → kolu
@@ -175,6 +192,7 @@ _(kısa cevap)_
 _(kısa cevap)_
 
 **37.** [Çok Adımlı Muhakeme · L1] Bir kutuda 12 kalem vardır. Bunların yarısı mavidir, mavilerin de yarısı yenidir. Kaç tane yeni mavi kalem vardır?
+
 - A) 3
 - B) 6
 - C) 12
@@ -184,6 +202,7 @@ _(kısa cevap)_
 _(kısa cevap)_
 
 **39.** [İngilizce Dil Bilgisi · L1] İngilizcede 'child' sözcüğünün çoğulu hangisidir?
+
 - A) childs
 - B) children
 - C) childes
@@ -191,8 +210,6 @@ _(kısa cevap)_
 
 **40.** [İngilizce Dil Bilgisi · L2] İngilizcede 'write' fiilinin üçüncü hâli (past participle) nedir? (tek kelime)
 _(kısa cevap)_
-
-
 
 ---
 

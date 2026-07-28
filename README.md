@@ -4,13 +4,19 @@
 
 ## Abstract
 
-MIHENK is a bilingual (Turkish–English), multi-disciplinary benchmark for evaluating large language models on **reasoning rather than memorized recall**. It targets four competencies that surface in real-world use — inference from given information, careful reading under distraction, language mastery, and multi-step problem solving — across 20 disciplines and four calibrated difficulty tiers (L1–L4). Every item is automatically and objectively scorable, so results are reproducible and comparable over time. All questions are original: no copyrighted examination bank is copied or paraphrased, and every record declares its provenance (`source = "orijinal-AI-üretim"`) for full transparency.
+MIHENK is a bilingual (Turkish–English), multi-disciplinary benchmark for evaluating large language models on **reasoning rather than memorized recall**. It targets four competencies that surface in real-world use — inference from given information, careful reading under distraction, language mastery, and multi-step problem solving — across 20 disciplines and four calibrated difficulty tiers (L1–L4). Every item is automatically and objectively scorable, so results are reproducible and comparable over time. All questions are original: no copyrighted examination bank is copied or paraphrased, and every record declares its provenance for full transparency.
 
 > **Version 1.0** · Phase 1 (Pilot Set) · 20 disciplines × 2 languages × 2 formats × 10 items = **800 questions**.
 
-## Motivation
+## Leaderboard
 
-Existing evaluation sets are frequently (i) monolingual or English-centric, (ii) susceptible to training-data contamination, and (iii) dominated by fact retrieval that a sufficiently large model can memorize. MIHENK addresses these by pairing each item across two languages (localized, not literally translated), by reserving the majority of items as a private holdout, and by constructing items whose answers require inference from the stimulus. Distractors are not random: they encode common error patterns (arithmetic slips, hasty generalization, misremembering), so a shallow heuristic is actively penalized.
+Results on the public sample (80 items). Full table and notes: **[`leaderboard.md`](leaderboard.md)**.
+
+| # | Model | Overall (/80) | Accuracy |
+|---|-------|:---:|:---:|
+| 🥇 | Gemini Pro 3.1 | 80 | 100.0% |
+| 🥈 | Gemini Flash 3.6 | 79 | 98.8% |
+| 🥉 | GPT-5.5 | 77 | 96.2% |
 
 ## Design principles
 
@@ -25,23 +31,7 @@ Existing evaluation sets are frequently (i) monolingual or English-centric, (ii)
 
 Mathematics · Logic · Programming · Debugging · Turkish Grammar · English Grammar · History · Geography · Physics · Chemistry · Biology · Law · Economics · Philosophy · Everyday Reasoning · Numerical Reasoning · Table & Data Interpretation · Chart Analysis · Multi-step Reasoning · Scientific Paper Comprehension
 
-The canonical `discipline` field stores the Turkish name on every record (a language-neutral key that pairs the TR/EN versions of the same discipline). The slug ↔ abbreviation ↔ English-name mapping is in `config/disciplines.json`. For the two grammar disciplines, the non-native-language files pose questions *about* that grammar in the other medium (e.g. Turkish-grammar items phrased in English), which lets the benchmark probe cross-lingual metalinguistic knowledge.
-
-## Repository layout
-
-```
-data/{tr,en}/{discipline-slug}/{multiple_choice,short_answer}.jsonl
-schema/question_schema.json      # JSON Schema (draft-07)
-scoring/                         # reference scorer (score.py, normalize.py)
-scripts/validate.py              # schema + rule validation
-scripts/build_hf.py              # assemble the HuggingFace public sample
-scripts/evaluate.py              # run a model and report the metrics
-scripts/assign_splits.py         # deterministic, difficulty-balanced public/private split
-scripts/upload_hf.py             # push the public sample to the HuggingFace Hub
-config/disciplines.json          # discipline registry
-huggingface/                     # dataset card + public split
-versions/CHANGELOG.md
-```
+The canonical `discipline` field stores the Turkish name on every record (a language-neutral key that pairs the TR/EN versions of the same discipline). The slug ↔ abbreviation ↔ English-name mapping is in `config/disciplines.json`. For the two grammar disciplines, the non-native-language files pose questions _about_ that grammar in the other medium (e.g. Turkish-grammar items phrased in English), which lets the benchmark probe cross-lingual metalinguistic knowledge.
 
 ## Data schema
 
@@ -74,8 +64,9 @@ versions/CHANGELOG.md
 **Standardized conditions.** A fixed system prompt per format, 0-shot, a fixed decoding configuration, and a single run by default (optional multi-run averaging for variance). On the Claude Opus 4.x family the sampling parameters are removed by the API, so determinism is controlled through the thinking/effort configuration rather than temperature.
 
 **Scoring (`scoring/score.py`).**
-- *Multiple choice:* the selected letter is parsed from the model output by regex; an exact match with the correct letter scores 1.
-- *Short answer:* the output is lowercased, punctuation/whitespace-normalized, and compared against the canonical answer and its aliases; numeric answers use a relative tolerance. Any answer exceeding 7 words or otherwise off-format automatically scores 0 — this also measures instruction-following.
+
+- _Multiple choice:_ the selected letter is parsed from the model output by regex; an exact match with the correct letter scores 1.
+- _Short answer:_ the output is lowercased, punctuation/whitespace-normalized, and compared against the canonical answer and its aliases; numeric answers use a relative tolerance. Any answer exceeding 7 words or otherwise off-format automatically scores 0 — this also measures instruction-following.
 
 **Reported metrics.** Overall accuracy; per-discipline, per-language, per-difficulty, and per-format accuracy; and a **language-consistency index** (the mean absolute TR/EN accuracy gap across disciplines).
 
@@ -118,14 +109,3 @@ Only the `public` split is distributed on HuggingFace; the `private` holdout is 
 
 - **Code** (scripts, scorer, schema): MIT — see `LICENSE`.
 - **Data** (`data/`): CC BY 4.0 recommended — free use with attribution.
-
-## Citation
-
-```bibtex
-@misc{mihenk2026,
-  title  = {MIHENK: Multilingual Intelligence, High-level Evaluation and Neural Knowledge Benchmark},
-  year   = {2026},
-  note   = {Version 1.0, Phase 1 Pilot Set},
-  url    = {https://github.com/gorkemergune/mihenk-benchmark}
-}
-```
