@@ -16,3 +16,7 @@ Thumbs.db
 # Geçici çıktı
 *.tmp
 ~$*
+
+# Değerlendirme çıktıları ve özel quizler
+results*.json
+quizzes/*_private_*.md
