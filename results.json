@@ -1,0 +1,445 @@
+{
+  "model": "claude-opus-4-8",
+  "split": "public",
+  "n": 80,
+  "overall_accuracy": 0.0,
+  "by_language": {
+    "en": 0.0,
+    "tr": 0.0
+  },
+  "by_format": {
+    "multiple_choice": 0.0,
+    "short_answer": 0.0
+  },
+  "by_difficulty": {
+    "L1": 0.0,
+    "L2": 0.0,
+    "L3": 0.0,
+    "L4": 0.0
+  },
+  "by_discipline": {
+    "Bilimsel Makale Anlama": 0.0,
+    "Biyoloji": 0.0,
+    "Coğrafya": 0.0,
+    "Debugging": 0.0,
+    "Ekonomi": 0.0,
+    "Felsefe": 0.0,
+    "Fizik": 0.0,
+    "Grafik Analizi": 0.0,
+    "Günlük Muhakeme": 0.0,
+    "Hukuk": 0.0,
+    "Kimya": 0.0,
+    "Mantık": 0.0,
+    "Matematik": 0.0,
+    "Programlama": 0.0,
+    "Sayısal Akıl Yürütme": 0.0,
+    "Tablo ve Veri Yorumu": 0.0,
+    "Tarih": 0.0,
+    "Türkçe Dil Bilgisi": 0.0,
+    "Çok Adımlı Muhakeme": 0.0,
+    "İngilizce Dil Bilgisi": 0.0
+  },
+  "language_consistency_index": 0.0,
+  "details": [
+    {
+      "id": "MIHENK-SCIREAD-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-SCIREAD-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-BIO-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-BIO-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-GEO-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-GEO-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-MULTI-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-MULTI-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-DEBUG-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-DEBUG-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-ECON-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-ECON-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-PHIL-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-PHIL-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-PHYS-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-PHYS-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-GRAPH-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-GRAPH-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-COMMON-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-COMMON-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-LAW-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-LAW-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-ENGRAM-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-ENGRAM-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-CHEM-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-CHEM-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-LOGIC-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-LOGIC-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-MATH-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-MATH-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-PROG-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-PROG-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-NUM-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-NUM-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-TABLE-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-TABLE-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-HIST-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-HIST-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-TRGRAM-EN-L3-0007",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-TRGRAM-EN-L4-0019",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-SCIREAD-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-SCIREAD-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-BIO-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-BIO-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-GEO-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-GEO-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-MULTI-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-MULTI-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-DEBUG-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-DEBUG-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-ECON-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-ECON-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-PHIL-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-PHIL-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-PHYS-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-PHYS-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-GRAPH-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-GRAPH-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-COMMON-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-COMMON-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-LAW-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-LAW-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-ENGRAM-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-ENGRAM-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-CHEM-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-CHEM-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-LOGIC-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-LOGIC-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-MATH-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-MATH-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-PROG-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-PROG-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-NUM-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-NUM-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-TABLE-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-TABLE-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-HIST-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-HIST-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-TRGRAM-TR-L1-0001",
+      "score": 0,
+      "model_output": ""
+    },
+    {
+      "id": "MIHENK-TRGRAM-TR-L2-0014",
+      "score": 0,
+      "model_output": ""
+    }
+  ]
+}
