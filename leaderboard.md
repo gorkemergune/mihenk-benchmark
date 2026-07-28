@@ -19,6 +19,9 @@ Evaluated with `scripts/evaluate.py` over the complete data set (all splits, all
 | 5 | **phi3.5** | Ollama (local) | **51.0%** | 38.0% | 64.0% | 61.2% | 40.8% | 58.8 / 53.3 / 47.5 / 39.4 | 26.5 |
 | 6 | **llama3.2:3b** | Ollama (local) | **49.0%** | 39.0% | 59.0% | 55.0% | 43.0% | 62.1 / 47.9 / 40.6 / 39.4 | 20.0 |
 | 7 | **mistral:7b** | Ollama (local) | **47.8%** | 35.5% | 60.0% | 51.0% | 44.5% | 51.7 / 51.2 / 44.4 / 40.0 | 26.0 |
+| 8 | **ayarlicazhocam** _(Llama-3.2-3B LoRA finetune)_ | Ollama (local) | **43.2%** | 32.2% | 54.2% | 56.2% | 30.2% | 56.7 / 41.2 / 35.6 / 33.8 | 22.0 |
+
+**Finetune vs. base.** `ayarlicazhocam` is the maintainer's own LoRA finetune of Llama-3.2-3B ([gorkemergune/ayarlicazhocam-llama-3.2-3b](https://huggingface.co/gorkemergune/ayarlicazhocam-llama-3.2-3b)), evaluated by converting the LoRA adapter to a GGUF adapter (llama.cpp) and applying it to `llama3.2:3b`. It scores **below its base** (43.2% vs 49.0%): the persona/chat finetune trades benchmark accuracy — short-answer drops the most (30.2% vs base 43.0%), as the model produces longer, less format-compliant answers, and Turkish also drops (32.2% vs 39.0%); multiple-choice is roughly unchanged (56.2% vs 55.0%). Caveat: the adapter was trained on the Unsloth base but applied here to the Ollama instruct build, so this is a practical rather than a perfectly weight-matched comparison.
 
 **deepseek-r1:7b profile.** A reasoning model: strongest MC of the small models (88.5%) but the weakest short-answer/MC gap (44.2% vs 88.5%) — its free-form answers often break the ≤7-word canonical format, which MIHENK penalizes as an instruction-following signal (10/800 answers also came back empty when reasoning consumed the token budget). Notably its TR/EN gap nearly vanishes (66.2% vs 66.5%), unlike the non-reasoning 3B/7B models.
 
