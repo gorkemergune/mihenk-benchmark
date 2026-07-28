@@ -40,6 +40,7 @@ pip install openai        # OpenAI-uyumlu istemci (OpenRouter bununla çalışı
 `scripts/evaluate.py` artık `--backend openai` seçeneğiyle her OpenAI-uyumlu sağlayıcıyı destekliyor.
 
 **Önce API'siz deneme (boru hattı çalışıyor mu?):**
+
 ```powershell
 python scripts/evaluate.py --split public --backend dryrun
 ```
@@ -56,7 +57,7 @@ python scripts/evaluate.py `
   --backend openai `
   --base-url https://openrouter.ai/api/v1 `
   --api-key-env OPENROUTER_API_KEY `
-  --model "google/gemini-flash-1.5" `
+  --model "google/gemini-2.5-flash-lite" `
   --output results/gemini-flash.json
 ```
 
@@ -70,20 +71,20 @@ python scripts/evaluate.py `
 
 Aşağıdaki sırayla ilerle. **Ucuzdan pahalıya / bazlından frontier'a** doğru dizildi; ilk üçü boru hattını ucuza doğrular, sonrakiler ciddi karşılaştırma içindir.
 
-| Sıra | Sağlayıcı | Model (OpenRouter kimliği — sitede doğrula) | Rol |
-|---|---|---|---|
-| 1 | Google | `google/gemini-flash-1.5` | ucuz baz / doğrulama |
-| 2 | Anthropic | `anthropic/claude-haiku-4-5` | ucuz baz |
-| 3 | OpenAI | `openai/gpt-5-mini` (veya güncel mini) | ucuz baz |
-| 4 | DeepSeek | `deepseek/deepseek-chat` | orta |
-| 5 | Meta | `meta-llama/llama-4-maverick` | açık kaynak frontier |
-| 6 | Alibaba | `qwen/qwen-max` (veya güncel) | açık kaynak frontier |
-| 7 | Mistral | `mistralai/mistral-large` | frontier |
-| 8 | xAI | `x-ai/grok-4` (veya güncel) | frontier |
-| 9 | DeepSeek | `deepseek/deepseek-r1` (reasoner) | muhakeme frontier |
-| 10 | Google | `google/gemini-pro-1.5` (veya Gemini 3 Pro) | frontier |
-| 11 | OpenAI | `openai/gpt-5.5` (veya güncel) | frontier |
-| 12 | Anthropic | `anthropic/claude-opus-4-8` | frontier |
+| Sıra | Sağlayıcı | Model (OpenRouter kimliği — sitede doğrula) | Rol                    |
+| ----- | ------------ | ---------------------------------------------- | ---------------------- |
+| 1     | Google       | `google/gemini-2.5-flash-lite`                    | ucuz baz / doğrulama  |
+| 2     | Anthropic    | `anthropic/claude-haiku-4-5`                 | ucuz baz               |
+| 3     | OpenAI       | `openai/gpt-5-mini` (veya güncel mini)      | ucuz baz               |
+| 4     | DeepSeek     | `deepseek/deepseek-chat`                     | orta                   |
+| 5     | Meta         | `meta-llama/llama-4-maverick`                | açık kaynak frontier |
+| 6     | Alibaba      | `qwen/qwen-max` (veya güncel)               | açık kaynak frontier |
+| 7     | Mistral      | `mistralai/mistral-large`                    | frontier               |
+| 8     | xAI          | `x-ai/grok-4` (veya güncel)                 | frontier               |
+| 9     | DeepSeek     | `deepseek/deepseek-r1` (reasoner)            | muhakeme frontier      |
+| 10    | Google       | `google/gemini-3.1-pro-preview` (veya Gemini 3 Pro)  | frontier               |
+| 11    | OpenAI       | `openai/gpt-5.5` (veya güncel)              | frontier               |
+| 12    | Anthropic    | `anthropic/claude-opus-4-8`                  | frontier               |
 
 > Zaten **Gemini Pro 3.1, Gemini Flash 3.6 ve GPT-5.5** için elle sonuç aldık (bkz. `leaderboard.md`). API'yle bunları da tekrar teyit edebilir, üstüne yenilerini ekleyebilirsin.
 
@@ -91,7 +92,7 @@ Aşağıdaki sırayla ilerle. **Ucuzdan pahalıya / bazlından frontier'a** doğ
 
 ```powershell
 $models = @(
-  "google/gemini-flash-1.5",
+  "google/gemini-2.5-flash-lite",
   "anthropic/claude-haiku-4-5",
   "openai/gpt-5-mini",
   "deepseek/deepseek-chat",
@@ -100,7 +101,7 @@ $models = @(
   "mistralai/mistral-large",
   "x-ai/grok-4",
   "deepseek/deepseek-r1",
-  "google/gemini-pro-1.5",
+  "google/gemini-3.1-pro-preview",
   "openai/gpt-5.5",
   "anthropic/claude-opus-4-8"
 )
@@ -121,20 +122,22 @@ foreach ($m in $models) {
 
 OpenRouter kullanmak istemezsen, `--base-url` ve `--api-key-env` değiştirerek doğrudan bağlanabilirsin:
 
-| Sağlayıcı | Anahtar nereden | `--base-url` | Örnek `--model` |
-|---|---|---|---|
-| **OpenAI** | https://platform.openai.com → API keys | (boş bırak, varsayılan) | `gpt-5.5` |
-| **DeepSeek** | https://platform.deepseek.com → API Keys | `https://api.deepseek.com` | `deepseek-chat` |
-| **Mistral** | https://console.mistral.ai → API Keys | `https://api.mistral.ai/v1` | `mistral-large-latest` |
-| **xAI (Grok)** | https://console.x.ai → API Keys | `https://api.x.ai/v1` | `grok-4` |
-| **Google Gemini** | https://aistudio.google.com → Get API key | `https://generativelanguage.googleapis.com/v1beta/openai/` | `gemini-2.0-flash` |
-| **Anthropic** | https://console.anthropic.com → API Keys | `evaluate.py --backend anthropic` (SDK'sı gömülü) | `claude-opus-4-8` |
+| Sağlayıcı            | Anahtar nereden                            | `--base-url`                                               | Örnek`--model`        |
+| ----------------------- | ------------------------------------------ | ------------------------------------------------------------ | ------------------------ |
+| **OpenAI**        | https://platform.openai.com → API keys    | (boş bırak, varsayılan)                                   | `gpt-5.5`              |
+| **DeepSeek**      | https://platform.deepseek.com → API Keys  | `https://api.deepseek.com`                                 | `deepseek-chat`        |
+| **Mistral**       | https://console.mistral.ai → API Keys     | `https://api.mistral.ai/v1`                                | `mistral-large-latest` |
+| **xAI (Grok)**    | https://console.x.ai → API Keys           | `https://api.x.ai/v1`                                      | `grok-4`               |
+| **Google Gemini** | https://aistudio.google.com → Get API key | `https://generativelanguage.googleapis.com/v1beta/openai/` | `gemini-2.0-flash`     |
+| **Anthropic**     | https://console.anthropic.com → API Keys  | `evaluate.py --backend anthropic` (SDK'sı gömülü)      | `claude-opus-4-8`      |
 
 Her biri için:
+
 ```powershell
 setx OPENAI_API_KEY "..."     # ilgili anahtarı ilgili değişkene yaz
 python scripts/evaluate.py --split public --backend openai --base-url <URL> --api-key-env OPENAI_API_KEY --model <model>
 ```
+
 Anthropic için ise `--backend anthropic --model claude-opus-4-8` yeter (ayrı SDK gömülü, `ANTHROPIC_API_KEY` okur).
 
 ---
@@ -173,3 +176,35 @@ Her koşumun `results/<model>.json` çıktısında `overall_accuracy`, `by_langu
 - **HuggingFace'de 80 satır görünmesi normaldir:** HF'e yalnızca **public sample** (dev split, ~%10) yüklenir; kalan 720 soru **private holdout** olarak kirlenmeye karşı saklanır. Sorunun tamamı GitHub'daki `data/` klasöründedir.
 - **Maliyet:** ucuz modeller (Flash/Haiku/mini) 80 soruyu birkaç sent'e, frontier modeller birkaç on sent'e çözer. `--split all` (800 soru) maliyeti ~10 katına çıkarır; önce public ile dene.
 - **Determinizm:** openai backend `temperature=0` gönderir. Anthropic Opus 4.x'te sampling parametreleri API tarafından kaldırıldığı için gönderilmez.
+
+
+---
+
+## 8. Doğrulanmış güncel model kimlikleri (OpenRouter, 2026-07)
+
+`google/gemini-flash-1.5` gibi eski kimlikler kaldırıldı. **Kesin kimliği bulmak için:**
+```powershell
+python scripts/list_openrouter_models.py gemini    # anahtar/ücret göstermeden filtreler
+python scripts/list_openrouter_models.py ":free"   # ÜCRETSİZ uçlar
+```
+
+Şu an çalışan, iyi bir karşılaştırma listesi ($ = giriş/çıkış 1M token):
+
+| Model kimliği (`--model`) | $ | Rol |
+|---|---|---|
+| `openai/gpt-oss-20b:free` | 0 / 0 | **ücretsiz** baz |
+| `google/gemma-4-31b-it:free` | 0 / 0 | **ücretsiz** baz |
+| `nvidia/nemotron-3-super-120b-a12b:free` | 0 / 0 | **ücretsiz** güçlü |
+| `google/gemini-2.5-flash-lite` | 0.10 / 0.40 | çok ucuz |
+| `openai/gpt-5-nano` | 0.05 / 0.40 | çok ucuz |
+| `meta-llama/llama-4-scout` | 0.10 / 0.30 | ucuz açık kaynak |
+| `deepseek/deepseek-chat-v3.1` | 0.25 / 0.95 | orta |
+| `deepseek/deepseek-r1` | 0.70 / 2.50 | muhakeme |
+| `mistralai/mistral-large-2512` | 0.50 / 1.50 | Mistral Large 3 |
+| `qwen/qwen3-max` | 0.78 / 3.90 | frontier |
+| `x-ai/grok-4.5` | 2.00 / 6.00 | frontier |
+| `google/gemini-3.1-pro-preview` | 2.00 / 12.00 | frontier |
+| `openai/gpt-5` | 1.25 / 10.00 | frontier |
+| `anthropic/claude-opus-4.7` | 5.00 / 25.00 | frontier |
+
+> OpenRouter kimlikleri **nokta** kullanır (`claude-opus-4.7`), Anthropic'in kendi API'si **tire** (`claude-opus-4-8`). Anthropic'i doğrudan test etmek için `--backend anthropic --model claude-opus-4-8` daha günceldir.
