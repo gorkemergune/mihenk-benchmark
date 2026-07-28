@@ -13,10 +13,14 @@ Evaluated with `scripts/evaluate.py` over the complete data set (all splits, all
 | # | Model | Backend | Overall | TR | EN | MC | Short ans. | L1 / L2 / L3 / L4 | LCI |
 |---|-------|---------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | 🥇 | **gemma4:12b** | Ollama (local) | **97.6%** | 98.0% | 97.2% | 99.2% | 96.0% | 97.1 / 99.2 / 97.5 / 96.2 | 2.2 |
+| 🥈 | **llama3.2:3b** | Ollama (local) | **49.0%** | 39.0% | 59.0% | 55.0% | 43.0% | 62.1 / 47.9 / 40.6 / 39.4 | 20.0 |
 
 _LCI = language-consistency index (mean absolute TR/EN accuracy gap across disciplines; lower = more consistent)._
 
-> **Observation.** Even a 12B local model scores ~98% across the full L1–L4 range (L4 = 96.2%). This confirms that the v1.0 pilot — authored by an LLM — is comparatively easy for modern LLMs and does not yet separate strong models. A genuinely hard tier (v1.1: multi-step, multi-domain, adversarial L4+) is the planned next step to restore discrimination.
+> **Observations.**
+> 1. **The benchmark discriminates by capability.** A 12B model saturates at ~98%, while a 3B model lands at ~49% — a 49-point spread with a clean L1→L4 gradient (62%→39%). MIHENK is not "broken/too easy"; the ceiling is reached only by capable models.
+> 2. **Language gap is a real signal.** The 3B model is far weaker in Turkish than English (39% vs 59%, LCI = 20.0), exactly the cross-lingual weakness MIHENK is designed to surface. The 12B model shows almost no gap (LCI = 2.2).
+> 3. **Still, strong models saturate.** To separate _frontier_ models (which will all approach 100% here), a genuinely hard tier (v1.1: multi-step, multi-domain, adversarial L4+) remains the planned next step.
 
 ---
 
