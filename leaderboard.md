@@ -2,7 +2,7 @@
 
 Model results, graded with the reference scorer (`scoring/score.py`: exact-letter for MC, normalized canonical/alias + numeric tolerance for short answer). Standardized 0-shot conditions.
 
-_Last updated: 2026-07-28._
+_Last updated: 2026-07-29._
 
 ---
 
@@ -16,8 +16,9 @@ Evaluated with `scripts/evaluate.py` over the complete data set (all splits, all
 | 🥈 | **qwen2.5:7b** | Ollama (local) | **74.4%** | 64.5% | 84.2% | 78.8% | 70.0% | 80.4 / 75.0 / 71.2 / 67.5 | 20.2 |
 | 🥉 | **gemma2:9b** | Ollama (local) | **73.1%** | 69.8% | 76.5% | 78.0% | 68.2% | 82.5 / 75.8 / 68.1 / 60.0 | 9.2 |
 | 4 | **deepseek-r1:7b** | Ollama (local) | **66.4%** | 66.2% | 66.5% | 88.5% | 44.2% | 65.4 / 69.6 / 61.9 / 67.5 | 18.2 |
-| 5 | **llama3.2:3b** | Ollama (local) | **49.0%** | 39.0% | 59.0% | 55.0% | 43.0% | 62.1 / 47.9 / 40.6 / 39.4 | 20.0 |
-| 6 | **mistral:7b** | Ollama (local) | **47.8%** | 35.5% | 60.0% | 51.0% | 44.5% | 51.7 / 51.2 / 44.4 / 40.0 | 26.0 |
+| 5 | **phi3.5** | Ollama (local) | **51.0%** | 38.0% | 64.0% | 61.2% | 40.8% | 58.8 / 53.3 / 47.5 / 39.4 | 26.5 |
+| 6 | **llama3.2:3b** | Ollama (local) | **49.0%** | 39.0% | 59.0% | 55.0% | 43.0% | 62.1 / 47.9 / 40.6 / 39.4 | 20.0 |
+| 7 | **mistral:7b** | Ollama (local) | **47.8%** | 35.5% | 60.0% | 51.0% | 44.5% | 51.7 / 51.2 / 44.4 / 40.0 | 26.0 |
 
 **deepseek-r1:7b profile.** A reasoning model: strongest MC of the small models (88.5%) but the weakest short-answer/MC gap (44.2% vs 88.5%) — its free-form answers often break the ≤7-word canonical format, which MIHENK penalizes as an instruction-following signal (10/800 answers also came back empty when reasoning consumed the token budget). Notably its TR/EN gap nearly vanishes (66.2% vs 66.5%), unlike the non-reasoning 3B/7B models.
 
