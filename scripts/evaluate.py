@@ -92,7 +92,7 @@ def make_anthropic_backend(model: str):
     return call
 
 
-def make_openai_backend(model: str, base_url: str | None, api_key_env: str):
+def make_openai_backend(model: str, base_url: str | None, api_key_env: str, max_tokens: int):
     """OpenAI-compatible Chat Completions backend.
 
     Works with OpenAI directly, and with any provider exposing an OpenAI-compatible
@@ -115,8 +115,8 @@ def make_openai_backend(model: str, base_url: str | None, api_key_env: str):
     def call(system: str, user: str) -> str:
         resp = client.chat.completions.create(
             model=model,
-            max_tokens=64,
-            temperature=0,   # determinism; most non-Anthropic models accept this
+            max_tokens=max_tokens,   # reasoning models need headroom or content comes back empty
+            temperature=0,           # determinism; most non-Anthropic models accept this
             messages=[{"role": "system", "content": system},
                       {"role": "user", "content": user}],
         )
@@ -144,13 +144,15 @@ def main():
     ap.add_argument("--api-key-env", default="OPENAI_API_KEY",
                     help="openai backend için API anahtarını içeren ortam değişkeni adı")
     ap.add_argument("--limit", type=int, default=0, help="0 = tümü")
+    ap.add_argument("--max-tokens", type=int, default=1024,
+                    help="openai backend yanıt sınırı; reasoning modellerde büyük olmalı (varsayılan 1024)")
     ap.add_argument("--output", default=None, help="Sonuçları JSON olarak yaz")
     args = ap.parse_args()
 
     if args.backend == "dryrun":
         call = make_dryrun_backend()
     elif args.backend == "openai":
-        call = make_openai_backend(args.model, args.base_url, args.api_key_env)
+        call = make_openai_backend(args.model, args.base_url, args.api_key_env, args.max_tokens)
     else:
         call = make_anthropic_backend(args.model)
 
