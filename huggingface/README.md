@@ -26,16 +26,20 @@ configs:
 
 # MIHENK — Multilingual Intelligence, High-level Evaluation and Neural Knowledge Benchmark
 
-A bilingual (Turkish + English), multi-disciplinary, **reasoning-focused** LLM evaluation benchmark.
+## Abstract
 
-This HuggingFace repository holds the **public sample (dev) split** of the benchmark. To guard against contamination, the majority of questions are kept as a **private holdout** and are not distributed here. Canonical/full repository: <https://github.com/gorkemergune/mihenk-benchmark>
+MIHENK is a bilingual (Turkish–English), multi-disciplinary benchmark for evaluating large language models on **reasoning rather than memorized recall** — inference from given information, careful reading under distraction, language mastery, and multi-step problem solving — across 20 disciplines and four difficulty tiers (L1–L4). All items are automatically and objectively scorable.
 
-## What it measures
+This repository hosts the **public sample (development) split**. To limit training-data contamination, the majority of items are retained as a **private holdout** and are not distributed here. The canonical, full repository (all items, scorer, validators, evaluation harness) is at <https://github.com/gorkemergune/mihenk-benchmark>.
 
-Not memorized recall, but **inference, careful reading, language mastery, and multi-step problem solving**. 20 disciplines, 4 difficulty tiers (L1–L4), two formats:
+## Task and formats
 
-- `multiple_choice` — 4–5 options, one correct answer, exact-match scoring.
-- `short_answer` — ≤7 words, normalized canonical/alias matching.
+Each item appears in both languages (localized, not literally translated), enabling per-language reporting and a language-consistency measure. Two formats:
+
+- `multiple_choice` — 4–5 options, one correct answer, exact-letter scoring.
+- `short_answer` — ≤ 7 words, normalized canonical/alias match with numeric tolerance.
+
+Distractors encode common error patterns (arithmetic slips, hasty generalization, misremembering) rather than being random, so shallow heuristics are penalized.
 
 ## Fields
 
@@ -43,7 +47,7 @@ Not memorized recall, but **inference, careful reading, language mastery, and mu
 |---|---|
 | `id` | `MIHENK-{DISCIPLINE}-{LANG}-{DIFFICULTY}-{SEQ}` |
 | `language` | `tr` / `en` |
-| `discipline` | Canonical discipline name (e.g. `Matematik`) |
+| `discipline` | Canonical discipline name (Turkish string, language-neutral key) |
 | `format` | `multiple_choice` / `short_answer` |
 | `difficulty` | `L1`–`L4` |
 | `question` | Question text |
@@ -51,10 +55,10 @@ Not memorized recall, but **inference, careful reading, language mastery, and mu
 | `answer` | Correct option letter for MC; `null` for short answer |
 | `answer_short` | Canonical answer for short answer; `null` for MC |
 | `answer_aliases` | (optional) accepted synonymous answers |
-| `explanation` | Short rationale of the solution |
-| `tags` | Tags |
+| `explanation` | Short **English** rationale (metadata; never shown to the model) |
+| `tags` | Topic tags |
 | `source` | Always `orijinal-AI-üretim` (original AI generation) |
-| `split` | Only `public` in this repository |
+| `split` | `public` in this repository |
 
 ## Usage
 
@@ -68,18 +72,20 @@ print(ds[0])
 tr_mc = ds.filter(lambda r: r["language"] == "tr" and r["format"] == "multiple_choice")
 ```
 
-## Scoring
+## Evaluation
 
-- **MC:** the selected letter is parsed from the model output with a regex; an exact match with the correct letter scores 1.
-- **Short answer:** lowercasing + punctuation/whitespace normalization + canonical/alias matching; numeric answers use a tolerance. Any answer exceeding 7 words or off-format automatically scores 0.
+Standardized conditions: a fixed system prompt per format, 0-shot, a fixed decoding configuration, and a single run by default.
 
-Reference scoring code lives in the `scoring/` directory of the GitHub repository.
+- **Multiple choice:** the selected letter is parsed by regex; an exact match with the correct letter scores 1.
+- **Short answer:** lowercasing + punctuation/whitespace normalization + canonical/alias match with numeric tolerance; any answer exceeding 7 words or off-format automatically scores 0.
 
-## Transparency and originality
+Reported metrics: overall, per-discipline, per-language, per-difficulty, and per-format accuracy, plus a language-consistency index (the mean absolute TR/EN accuracy gap). The reference scorer and a runnable evaluation harness (`scripts/evaluate.py`) are in the GitHub repository.
 
-All questions are written **from scratch**. No copyrighted exam bank (ÖSYM, SAT, GRE, prep-school publications, etc.) is copied or paraphrased; only their style/difficulty is used as a reference. Accordingly, the `source` field is set transparently to `orijinal-AI-üretim` on every record.
+## Originality and transparency
 
-## License
+All items are written from scratch. No copyrighted examination bank (ÖSYM, SAT, GRE, prep-school publications, etc.) is copied or paraphrased; only their style and difficulty calibration are used as a reference. Accordingly, `source` is set transparently to `orijinal-AI-üretim` on every record.
+
+## Licensing
 
 Data: **CC BY 4.0**. Code (GitHub): MIT.
 
@@ -89,7 +95,7 @@ Data: **CC BY 4.0**. Code (GitHub): MIT.
 @misc{mihenk2026,
   title  = {MIHENK: Multilingual Intelligence, High-level Evaluation and Neural Knowledge Benchmark},
   year   = {2026},
-  note   = {v1.0, Phase 1 Pilot Set},
+  note   = {Version 1.0, Phase 1 Pilot Set},
   url    = {https://github.com/gorkemergune/mihenk-benchmark}
 }
 ```
