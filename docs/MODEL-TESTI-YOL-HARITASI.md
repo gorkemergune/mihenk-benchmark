@@ -139,6 +139,29 @@ Anthropic için ise `--backend anthropic --model claude-opus-4-8` yeter (ayrı S
 
 ---
 
+## 5.5. Yerel modeller — Ollama (bedava, anahtarsız)
+
+Ollama yerel modelleri **OpenAI-uyumlu** `http://localhost:11434/v1` adresinden sunar; API anahtarı ve para gerekmez. Küçük modeller genelde daha düşük skor alır — zorlayıcı ayrım için harika.
+
+```powershell
+# 1) Model indir (biri yeter, birden çok deneyebilirsin):
+ollama pull llama3.1          # 8B
+ollama pull qwen2.5:7b
+ollama pull gemma2:9b
+ollama pull phi4              # Microsoft
+ollama pull deepseek-r1:7b    # muhakeme
+ollama pull mistral
+
+# 2) Test et (anahtar GEREKMEZ):
+python scripts/evaluate.py --split public --backend openai `
+  --base-url http://localhost:11434/v1 --model llama3.1 `
+  --output results/ollama-llama3.1.json
+```
+
+`ollama list` ile indirdiğin modellerin kimliklerini görebilirsin; `--model` oraya birebir yazılır. Ollama'nın çalışır olması yeter (`ollama serve` arka planda otomatik açılır).
+
+---
+
 ## 6. Sonuçları leaderboard'a ekleme
 
 Her koşumun `results/<model>.json` çıktısında `overall_accuracy`, `by_language`, `by_difficulty` vardır. Bunları `leaderboard.md` tablosuna işle. İstersen bana "results klasörünü güncelledim" dersin, hepsini okuyup tabloyu yeniden üretir ve commit ederim.

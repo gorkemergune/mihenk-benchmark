@@ -105,7 +105,11 @@ def make_openai_backend(model: str, base_url: str | None, api_key_env: str):
         sys.exit("openai SDK yok. Kurun: pip install openai")
     key = os.environ.get(api_key_env)
     if not key:
-        sys.exit(f"{api_key_env} ortam değişkeni tanımlı değil.")
+        # Local servers (Ollama, LM Studio, vLLM) ignore the key — use a placeholder.
+        if base_url and ("localhost" in base_url or "127.0.0.1" in base_url):
+            key = "local"
+        else:
+            sys.exit(f"{api_key_env} ortam değişkeni tanımlı değil.")
     client = OpenAI(base_url=base_url, api_key=key)
 
     def call(system: str, user: str) -> str:
