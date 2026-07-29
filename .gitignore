@@ -22,3 +22,4 @@ results*.json
 quizzes/*_private_*.md
 prompt.md
 results/*.json
+P.md
